@@ -27,11 +27,8 @@
 		 	$('#container').append('<div></div>');
 		 	var $el = $('#container').children().last();
 
-		 	$el.append('<p>' + empInfo.empFirstName + '</p>');
-		 	$el.append('<p>' + empInfo.empLastName + '</p>');
-		 	$el.append('<p>' + empInfo.empIDNumber + '</p>');
-		 	$el.append('<p>' + empInfo.empJobTitle + '</p>');
-		 	$el.append('<p>' + empInfo.empSalary + '</p>');
+		 	$el.append('<p>' + empInfo.empFirstName + ' ' + empInfo.empLastName + ' ('+ empInfo.empIDNumber + ') ' + empInfo.empJobTitle + ' $' + empInfo.empSalary + '/year</p>');
+		 	
 		 }
 		 function appendTotal(newMonthly) {
 		 	$('#monthly').prop('disabled', false);
