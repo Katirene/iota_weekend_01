@@ -27,9 +27,11 @@
 		 	$('#container').append('<div></div>');
 		 	var $el = $('#container').children().last();
 
-		 	$el.append('<p>' + empInfo.empFirstName + ' ' + empInfo.empLastName + ' ('+ empInfo.empIDNumber + ') ' + empInfo.empJobTitle + ' $' + empInfo.empSalary + '/year</p>');
-		 	
+		 	$el.data('timeStamp', Date.now());
+		 	$el.append('<p>' + empInfo.empFirstName + ' ' + empInfo.empLastName + ' ('+ empInfo.empIDNumber + ') ' + empInfo.empJobTitle + ' $' + empInfo.empSalary + '/year</p>');		
+		 	console.log($el.data());
 		 }
+
 		 function appendTotal(newMonthly) {
 		 	$('#monthly').prop('disabled', false);
 		 	$('#monthly').val(newMonthly);
