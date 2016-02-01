@@ -12,7 +12,15 @@
 		 	$.each($('#employeeForm').serializeArray(), function(i, field) {
 	 	 		values[field.name] = field.value;
 		 	});
-		 	totalAnnualSalaries += parseInt(values['empSalary']);
+		 	
+		 	var totalAnnualSalaries = 0;
+			//for (var empSalary in values) {
+    			if (values.hasOwnProperty('empSalary')) {
+    			totalAnnualSalaries += parseInt(values['empSalary']);
+				}
+			//};
+		 	
+		 	//totalAnnualSalaries += parseInt(values['empSalary']);  
 	      	monthlySalaries = totalAnnualSalaries / 12;
 
 		 	$('#employeeForm').find('input[type=text]').val('');
@@ -21,15 +29,17 @@
 		 	appendTotal(monthlySalaries);
 	 	});
 
+	 	$(document).on('click', '.delete', function() {
+    		$(this).parent().remove();
+			});
+
 
 		// function that appends input to dom.
 		 function appendDom(empInfo) {
 		 	$('#container').append('<div></div>');
-		 	var $el = $('#container').children().last();
-
-		 	$el.data('timeStamp', Date.now());
-		 	$el.append('<p>' + empInfo.empFirstName + ' ' + empInfo.empLastName + ' ('+ empInfo.empIDNumber + ') ' + empInfo.empJobTitle + ' $' + empInfo.empSalary + '/year</p>');		
-		 	console.log($el.data());
+		 	var $el = $('#container').children().last();		 	
+		 	$el.data('timeStamp', Date.now());		 	
+		 	$el.append('<p>' + empInfo.empFirstName + ' ' + empInfo.empLastName + ' ('+ empInfo.empIDNumber + ') ' + empInfo.empJobTitle + ' $' + empInfo.empSalary + '/year' + '<input type="button" class="delete" value ="Delete"</p>');				 	
 		 }
 
 		 function appendTotal(newMonthly) {
